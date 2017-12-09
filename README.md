@@ -1,10 +1,10 @@
 This library stores a compressed wordlist on your device.  It defaults to a list of 2,741 common english words.
 
 Flash space needed for just the word list:
- * 1,194 words (extras/words-1194.txt): 2,765 bytes
- * 2,741 words (extras/words-2741.txt): 7,480 bytes (default)
- * 3,345 words (extras/words-3345.txt): 9,370 bytes
- * 4,657 words (extras/words-4657.txt): 13,060 bytes
+ * 1,194 words (extras/words-1194.txt): 2,765 bytes. Gzip comparison: 2,659 bytes
+ * 2,741 words (extras/words-2741.txt): 7,480 bytes (default). Gzip comparison: 7,108 bytes
+ * 3,345 words (extras/words-3345.txt): 9,370 bytes. Gzip comparison: 9,013 bytes
+ * 4,657 words (extras/words-4657.txt): 13,060 bytes. Gzip comparison: 12,963 bytes
 
 
 To generate a new words.c file, use the compress script like this: `./extras/compress <extras/words-2741.txt >src/words.c`
