@@ -14,3 +14,5 @@ When adding new words, pay close attention to the characters used.  Right now on
 Right now the `MAX_WORD_LEN` is 15.  Change it if you need longer words.
 
 Example code is for a SSD1306 128x64 display on the default i2c bus, address 0x3C
+
+https://www.youtube.com/watch?v=pKNmQphuF7o - example video
