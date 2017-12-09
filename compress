@@ -1,0 +1,76 @@
+#!/usr/bin/perl
+
+# usage: ./compress <words-2741.txt >words.c
+
+use strict;
+
+my(@chars) = qw(eow ' a b c d e f g h i j k l m n o p q r s t u v w x y z);
+my(%chars);
+my $eow_marker = 0;     # end of word
+my $end_of_records = 31;# end of all records
+
+sub word_to_bits {
+  my($word) = @_;
+
+  my(@bits);
+  for(my $i = 0; $i < length($word); $i++) {
+    my $chr = substr($word, $i, 1);
+    push(@bits, $chars{$chr});
+  }
+
+  return @bits;
+}
+
+sub pack_bits {
+  my($bits,$i) = @_;
+
+  my(@bytes);
+  $bytes[0] = ($bits->[$i] & 0b00011111 ) << 3 | ($bits->[$i+1] & 0b00011100) >> 2;
+  $bytes[1] = ($bits->[$i+1] & 0b00000011) << 6 | ($bits->[$i+2] & 0b00011111) << 1 | ($bits->[$i+3] & 0b00010000) >> 4;
+  $bytes[2] = ($bits->[$i+3] & 0b00001111) << 4 | ($bits->[$i+4] & 0b00011110) >> 1;
+  $bytes[3] = ($bits->[$i+4] & 0b00000001) << 7 | ($bits->[$i+5] & 0b00011111) << 2 | ($bits->[$i+6] & 0b00011000) >> 3;
+  $bytes[4] = ($bits->[$i+6] & 0b00000111) << 5 | ($bits->[$i+7] & 0b00011111);
+
+  return @bytes;
+}
+
+for(my $i = 0; $i < @chars; $i++) {
+  $chars{$chars[$i]} = $i;
+}
+
+my(@bits);
+my $last = "";
+while(<>) {
+  chomp($_);
+  $_ = lc($_);
+  my $longest_match;
+  for($longest_match = 0; $longest_match < length($_); $longest_match++) {
+    if(substr($_, $longest_match, 1) ne substr($last, $longest_match, 1)) {
+      last;
+    }
+  }
+  if($longest_match > 29) { # 30-31 are special
+    $longest_match = 29;
+  }
+  my $suffix = substr($_, $longest_match, length($_) - $longest_match);
+  push(@bits, $longest_match);
+  push(@bits, word_to_bits($suffix));
+  push(@bits, $eow_marker);
+  $last = $_;
+}
+push(@bits,$end_of_records);
+
+print "#include <stdint.h>\n";
+print "const uint8_t words[] = {\n";
+for(my $i = 0; $i < @bits; $i += 8) {
+  if($i != 0) {
+    print ",\n";
+  }
+  my(@bytes) = pack_bits(\@bits,$i);
+  print "$bytes[0],\n";
+  print "$bytes[1],\n";
+  print "$bytes[2],\n";
+  print "$bytes[3],\n";
+  print "$bytes[4]";
+}
+print "\n};\n";
