@@ -1,0 +1,2 @@
+Copyright (c) 2017, Daniel Drown
+This code is in the public domain
