@@ -10,7 +10,7 @@ static const char char_lookup[] = {
   'j', 'k', 'l', 'm', 'n',  // 15
   'o', 'p', 'q', 'r', 's',  // 20
   't', 'u', 'v', 'w', 'x',  // 25
-  'y', 'z', ' ', ' ', ' ',  // 30
+  'y', 'z', '-', ' ', ' ',  // 30
   ' ' // 31: END_OF_RECORDS
 };
 
