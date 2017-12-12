@@ -1,0 +1,31 @@
+[long] you typed: err henry poor trees seen with 289 keypresses taking 85.734 seconds
+[wordlist] you typed: err henry poor trees seen with 142 keypresses taking 49.642 seconds
+l(1194^5)/l(2)
+=51.1
+0.971 seconds/bit (word-1194)
+
+[long] you typed: examples plain searching pictures comparing with 467 keypresses taking 145.365 seconds
+[wordlist] you typed: examples plain searching pictures comparing with 152 keypresses taking 62.75 seconds
+l(2741^5)/l(2)
+=57.1
+1.098 seconds/bit (word-2741)
+
+[eff] you typed: liquid gibberish junkyard samurai body with 123 keypresses taking 45.695 seconds
+[eff2] you typed: liquid gibberish junkyard samurai body with 92 keypresses taking 35.04 seconds
+l(1296^5)/l(2)
+=51.7
+0.677 seconds/bit (eff)
+
+[eff2] you typed: lightbulb fleshiness zookeeper cactus giddiness running with 88 keypresses taking 41.232 seconds
+l(1296^6)/l(2)
+=62.0
+0.664 seconds/bit (eff)
+
+[eff2] you typed: vinegar john cytoplasm dedicate retriever arachnid aromatic with 118 keypresses taking 64.688 seconds
+l(1296^7)/l(2)
+=72.4
+0.893 seconds/bit (eff)
+
+Pass: romancer unwrinkled automobile lasagna evacuation animal elsewhere
+[eff2] you typed: romancer unwrinkled automobile lasagna evacuation animal elsewhere with 133 keypresses taking 55.825 seconds
+0.771 seconds/bit (eff)
